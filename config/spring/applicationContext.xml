@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop 
+			http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<!-- 导入其它application文件 -->
+	<import resource="applicationContext-web.xml"/>
+	<import resource="applicationContext-biz.xml"/>
+	<import resource="applicationContext-dao.xml"/>
+	 
+	<!-- 读数据库参数文件 
+	<bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config/props/db.properties</value>
+			</list>
+		</property>
+	</bean>-->
+	
+	<!-- spring数据源，使用DBCP连接池 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/employ?useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="username" value="root" />
+		<property name="password" value="xujinnan" />
+		<property name="initialSize" value="2" />
+		<property name="maxActive" value="8" />
+		<property name="maxIdle" value="5" />
+		<property name="minIdle" value="2" />
+		<property name="maxWait" value="3000" />
+		<property name="removeAbandonedTimeout" value="6000" />
+		<property name="removeAbandoned" value="true" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<!-- 引入hbm文件 -->
+		<property name="mappingLocations">
+			<list>
+				<value>
+					classpath:hibernate/hbm/TestUser.hbm.xml
+				</value>
+				<!-- <value>
+					classpath:hibernate/hbm/Review.hbm.xml
+				</value>
+				<value>
+					classpath:hibernate/hbm/User.hbm.xml
+				</value>
+				<value>
+					classpath:hibernate/hbm/DetailInfo.hbm.xml
+				</value>-->
+			</list>
+		</property>
+	</bean>
+
+	<!-- 配置声明事务管理 -->
+	<!-- 定义事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 事务规则 -->
+	<tx:advice id="tmAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!--*通配符 save* 方法名必须是以save开始-->
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="find*" read-only="true" />
+			<!-- read-only 只读：-->
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<!-- point cut -->
+		<aop:pointcut id="pointCut" expression="execution(* com.tarena.biz.*.*(..))" />
+		<aop:advisor advice-ref="tmAdvice" pointcut-ref="pointCut" />
+	</aop:config>
+</beans>

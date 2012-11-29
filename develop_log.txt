@@ -1,0 +1,2 @@
+2012-11-24 16:57:13		version 0.1		环境搭建成功：struts正常；spring注入Bean正常(Action、Dao)；数据库连接正常；log4j正常。
+2012-11-26 10:58:04		version 0.2		更改工程名为employ；增加了js，css, common, images目录。

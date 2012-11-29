@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	<!-- 设置开发模式 true:开发模式, false:运营模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 自动加载国际化资源文件 开发阶段设置true  运营阶段设置false -->
+	<constant name="struts.i18n.reload" value="true" />
+	<!-- 自动加载struts配置文件  开发阶段设置true  运营阶段设置false-->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 设置浏览器缓存 true:使用  -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 设置模板 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 设置统一字符集 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 设置集成spring框架 -->
+	<constant name="struts.objectFactory" value="spring"/>
+	
+	<!-- 引入其它struts配置文件 -->
+
+	<package name="mypackage" extends="struts-default">
+		<action name="test" class="testAction">
+			<result name="ok">/test.jsp</result>
+		</action>
+	</package>
+	
+	<package name="emp-default" extends="json-default">
+		<global-results>
+			<result name="comm">/common/exception.html</result>
+			<!-- <result name="sql">/common/sqlexception.html</result>
+			<result name="unLogin">/user/to_login.action</result> -->
+		</global-results>
+		<global-exception-mappings>
+			<!-- <exception-mapping result="sql" exception="java.sql.SQLException"/>
+			<exception-mapping result="unLogin" exception="com.tarena.exception.LoginException"/> -->
+			<exception-mapping result="comm" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+	</package>
+	
+	
+</struts>
