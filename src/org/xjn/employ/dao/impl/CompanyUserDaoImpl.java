@@ -23,7 +23,7 @@ public class CompanyUserDaoImpl extends HibernateDaoSupport implements ICompanyU
 	}
 
 	public CompanyUser findCompanyUser(int companyUserId) {
-		return (CompanyUser)getHibernateTemplate().get(Company.class, companyUserId);
+		return (CompanyUser)getHibernateTemplate().get(CompanyUser.class, companyUserId);
 	}
 
 	public void saveCompanyUser(CompanyUser companyUser) throws Exception {

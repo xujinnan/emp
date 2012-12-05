@@ -35,7 +35,7 @@
             <column name="describ" length="65535" />
         </property>
         <!-- 申请了此职位的人，N：N关系，由User端维护关系 -->
-        <set name="applicants" inverse="true">
+        <set name="applicants" inverse="true" table="job_app">
             <key column="job"/>
             <many-to-many class="org.xjn.employ.entity.User" column="user"/>
         </set>

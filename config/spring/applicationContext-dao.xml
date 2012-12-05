@@ -20,5 +20,10 @@
 	<bean id="resumeDaoImpl" class="org.xjn.employ.dao.impl.ResumeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>	
 	</bean>
-	
+	<bean id="jobDaoImpl" class="org.xjn.employ.dao.impl.JobDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="companyUserDaoImpl" class="org.xjn.employ.dao.impl.CompanyUserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 </beans>

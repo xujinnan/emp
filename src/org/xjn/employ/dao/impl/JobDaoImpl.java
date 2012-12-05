@@ -35,79 +35,69 @@ public class JobDaoImpl extends HibernateDaoSupport implements IJobDao{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Job> findAllAppliedJobs(final int userId) throws Exception {
+	public List<Job> findAllApplicantsOfOneJob(final int jobId) throws Exception {
 		return getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String hql = "select u.appliedJobs from User as u where u.userId=:uid";
-				return session.createQuery(hql).setInteger("uid", userId).list();
+				String hql = "select j.applicants from Job as j where j.jobId=:uid";
+				return session.createQuery(hql).setInteger("uid", jobId).list();
 			}
 		});
 	}
 
 	public Job findJobById(int jobId) throws Exception {
-		getHibernateTemplate().execute(new HibernateCallback() {
-			public Object doInHibernate(Session session) throws HibernateException,
-					SQLException {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		});
-		return null;
+		return (Job) getHibernateTemplate().get(Job.class, jobId);
 	}
 
-	public List<Job> findJobsByCompanyId(int companyId) throws Exception {
-		getHibernateTemplate().execute(new HibernateCallback() {
+	@SuppressWarnings("unchecked")
+	public List<Job> findJobsByCompanyId(final int companyId) throws Exception {
+		return this.getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				// TODO Auto-generated method stub
-				return null;
+				String hql = "select c.companyJobs from Company as c where c.companyId=:cid";
+				return session.createQuery(hql).setInteger("cid", companyId).list();
 			}
 		});
-		return null;
 	}
 
-	public List<Job> findJobsByCompanyName(String companyName) throws Exception {
-		getHibernateTemplate().execute(new HibernateCallback() {
+	@SuppressWarnings("unchecked")
+	public List<Job> findJobsByCompanyName(final String companyName) throws Exception {
+		return getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				// TODO Auto-generated method stub
-				return null;
+				String hql = "select c.companyJobs from Company as c where c.name like '%:name%'";
+				return session.createQuery(hql).setString("name", companyName).list();
 			}
 		});
-		return null;
 	}
 
-	public List<Job> findJobsByKeyWord(String keyWord) throws Exception {
-		getHibernateTemplate().execute(new HibernateCallback() {
-			public Object doInHibernate(Session session) throws HibernateException,
-					SQLException {
-				// TODO Auto-generated method stub
-				return null;
+	@SuppressWarnings("unchecked")
+	public List<Job> findJobsByKeyWord(final String keyWord) throws Exception {
+		return getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,SQLException {
+				String hql = "from Job as j where j.name like :key or j.describ like :key";
+				return session.createQuery(hql).setString("key", "%"+keyWord+"%").list();
 			}
 		});
-		return null;
 	}
 
-	public List<Job> findJobsByName(String jobName) throws Exception {
-		getHibernateTemplate().execute(new HibernateCallback() {
+	@SuppressWarnings("unchecked")
+	public List<Job> findJobsByName(final String jobName) throws Exception {
+		return getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				// TODO Auto-generated method stub
-				return null;
+				String hql = "from Job as j where j.name like :key";
+				return session.createQuery(hql).setString("key", "%"+jobName+"%").list();
 			}
 		});
-		return null;
 	}
 
 	public void saveJob(Job job) throws Exception {
-		// TODO Auto-generated method stub
-		
+		getHibernateTemplate().save(job);
 	}
 
 	public void updateJob(Job job) throws Exception {
-		// TODO Auto-generated method stub
-		
+		getHibernateTemplate().update(job);
 	}
 	
 }

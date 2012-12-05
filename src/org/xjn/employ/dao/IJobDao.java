@@ -68,8 +68,8 @@ public interface IJobDao {
 	
 	/**
 	 * 查找此职位的所有申请者
-	 * @param userId
+	 * @param jobId
 	 * @return
 	 */
-	List<Job> findAllAppliedJobs(int userId) throws Exception;
+	List<Job> findAllApplicantsOfOneJob(int jobId) throws Exception;
 }

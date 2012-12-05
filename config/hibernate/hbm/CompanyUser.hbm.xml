@@ -10,8 +10,8 @@
             <column name="com_user_id" />
             <generator class="native" />
         </id>
-        <!-- 与Company的关系，单向1：1 -->
-        <many-to-one name="company" class="org.xjn.employ.entity.Company" fetch="select" unique="true" cascade="all">
+        <!-- 与Company的关系，单向1：1；加上fetch="join"，防止延时加载 -->
+        <many-to-one name="company" class="org.xjn.employ.entity.Company" fetch="join" unique="true" cascade="all">
             <column name="company" />
         </many-to-one>
         <property name="username" type="java.lang.String">
