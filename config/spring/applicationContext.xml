@@ -57,15 +57,21 @@
 				<value>
 					classpath:hibernate/hbm/TestUser.hbm.xml
 				</value>
-				<!-- <value>
-					classpath:hibernate/hbm/Review.hbm.xml
+				<value>
+					classpath:hibernate/hbm/Company.hbm.xml
+				</value>
+				<value>
+					classpath:hibernate/hbm/CompanyUser.hbm.xml
+				</value>
+				<value>
+					classpath:hibernate/hbm/Job.hbm.xml
+				</value>
+				<value>
+					classpath:hibernate/hbm/Resume.hbm.xml
 				</value>
 				<value>
 					classpath:hibernate/hbm/User.hbm.xml
 				</value>
-				<value>
-					classpath:hibernate/hbm/DetailInfo.hbm.xml
-				</value>-->
 			</list>
 		</property>
 	</bean>

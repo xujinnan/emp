@@ -11,8 +11,14 @@
 			http://www.springframework.org/schema/tx 
 			http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 			
-	<bean id="userDaoImpl" class="org.xjn.employ.dao.UserDemo">
+	<bean id="userDaoImpl" class="org.xjn.employ.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="companyDaoImpl" class="org.xjn.employ.dao.impl.CompanyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="resumeDaoImpl" class="org.xjn.employ.dao.impl.ResumeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>	
 	</bean>
 	
 </beans>
