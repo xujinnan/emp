@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<title>千里马招聘网</title>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<link href="http://img00.zhaopin.cn/2012/css/reset.min.css" type="text/css" rel="stylesheet" />
+
+<link href="css/position_list.css" type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="css/tab_css.css" />
+<script type="text/javascript" src="http://www.jq-school.com/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/tabjs.js"></script>
+<script type="text/javascript">
+$(function() {
+	 loadTab();
+});
+</script>
+</head>
+<body>
+
+<div class="main">
+	<div class="Search-box">
+		<div class="Search-boxtop"></div>
+		<div class="search">
+			<div id="funSearch">
+				<div id="searchForm">
+					<form name="frmSearch" method="get" action="SearchResult.ashx" onsubmit="return zlzp.searchjob.gotoSearch_t()">
+						<table id="posFilter">
+							<tr>
+								<td><span>职位类别</span></td>
+								<td><span>行业类别</span></td>
+								<td rowspan="2">
+									<div class="tab_box">
+									    <div class="tagtab_label">
+									        <h2>搜索条件</h2>
+									        <ul class="tab_label">
+									            <li>按职位</li>
+									           <li>按公司</li>
+									        </ul>
+									    </div>
+									    <div class="tab_content">
+									        <div class="layout"><input type="text" name="KeyWord" id="KeyWord_kw2" class="input_keyword" size="47" value="java"/></div>
+									        <div class="layout"><input type="text" name="KeyWord" id="KeyWord_kw2" class="input_keyword" size="47" value="东软"/></div>
+									    </div>
+								 	</div>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="button" id="buttonSelJobType" name="buttonSelJobType" value="选择职位" title="选择职位类别" /></td>
+								<td><input type="button" id="buttonSelIndustry" name="buttonSelIndustry" value="选择行业" title="选择行业类别" /></td>
+							</tr>
+						</table>
+						<button class="doesSearch" type="submit" onclick="return submitfrom();" value="Search"></button>
+					</form>
+
+					
+				</div>
+			</div>
+		</div>
+		<div class="Search-boxbottom"></div>
+	</div>
+    <div>
+    
+    </div>
+	<div class="currentsearch">
+	当前搜索：java + 广州<span>共 <em>2003</em>个职位</span>
+	</div>
+	<div class="main2">
+    	<form name="frmMain" method="get" style="margin:0px;">
+		<div class="search-left-nav">
+			<div class="search-left-navtop"></div>
+			<div class="search-left-navmid">
+				<h4>在结果中筛选</h4>
+				<dl id="searchNav">
+					<dt><a href="#">发布日期</a><em><a href="javascript:void(0);" onclick="zlapply.searchjob.zoomInOut('', 'PublishDate')">不限</a></em></dt>
+					<dd>
+						<dl>
+							<dd ><a href="javascript:zlapply.searchjob.zoomInOut('1','PublishDate')">今天</a><span> (987)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('3','PublishDate')">最近三天</a><span> (1300)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('7','PublishDate')">最近一周</a><span> (1640)</span></dd><dd class="more_ddlist"><dl><dd ><a href="javascript:zlapply.searchjob.zoomInOut('30','PublishDate')">最近一个月</a><span> (1852)</span></dd></dl></dd><dd><a href="#" class="more">更多&gt;</a></dd>
+						</dl>
+					</dd>
+					<dt><a href="#">工作经验</a><em><a href="javascript:void(0);" onclick="zlapply.searchjob.zoomInOut('', 'WorkingExp')">不限</a></em></dt>
+					<dd>
+						<dl>
+							<dd ><a href="javascript:zlapply.searchjob.zoomInOut('0000','WorkingExp')">应届毕业生</a><span> (18)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('0001','WorkingExp')">1年以下</a><span> (18)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('0103','WorkingExp')">1-3年</a><span> (856)</span></dd><dd class="more_ddlist"><dl><dd ><a href="javascript:zlapply.searchjob.zoomInOut('0305','WorkingExp')">3-5年</a><span> (530)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('0510','WorkingExp')">5-10年</a><span> (196)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('1099','WorkingExp')">10年以上</a><span> (24)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('-1','WorkingExp')">不限</a><span> (361)</span></dd></dl></dd><dd><a href="#" class="more">更多&gt;</a></dd>
+						</dl>
+					</dd>
+					<dt><a href="#" >学历要求</a><em><a href="javascript:void(0);" onclick="zlapply.searchjob.zoomInOut('', 'EduLevel')">不限</a></em></dt>
+					<dd>
+						<dl>
+							<dd ><a href="javascript:zlapply.searchjob.zoomInOut('-1','EduLevel')">无</a><span> (153)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('7','EduLevel')">高中</a><span> (11)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('5','EduLevel')">大专</a><span> (636)</span></dd><dd class="more_ddlist"><dl><dd ><a href="javascript:zlapply.searchjob.zoomInOut('4','EduLevel')">本科</a><span> (1183)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('3','EduLevel')">硕士</a><span> (19)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('1','EduLevel')">博士</a><span> (1)</span></dd></dl></dd><dd><a href="#" class="more">更多&gt;</a></dd>
+						</dl>
+					</dd>
+					
+					<dt><a href="#">公司性质</a><em><a href="javascript:void(0);" onclick="zlapply.searchjob.zoomInOut('', 'CompanyType')">不限</a></em></dt>
+					<dd>
+						<dl>
+							<dd ><a href="javascript:zlapply.searchjob.zoomInOut('1','CompanyType')">国企</a><span> (120)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('5','CompanyType')">民营</a><span> (1100)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('4','CompanyType')">合资</a><span> (190)</span></dd><dd class="more_ddlist"><dl><dd ><a href="javascript:zlapply.searchjob.zoomInOut('2;3','CompanyType')">外商独资/代表处</a><span> (349)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('8;9','CompanyType')">股份制/上市公司</a><span> (191)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('6;10','CompanyType')">机关/事业单位 </a><span> (10)</span></dd><dd ><a href="javascript:zlapply.searchjob.zoomInOut('7','CompanyType')">其它</a><span> (43)</span></dd></dl></dd><dd><a href="#" class="more">更多&gt;</a></dd>
+						</dl>
+					</dd>					
+                    
+				</dl>
+			</div>
+			<div class="search-left-navbot"></div>
+		</div>
+
+		<!-- 职位列表 -->
+		<div class="search-mapcont-list">
+			<!-- 列表筛选选项 -->
+			<div class="list-heads">
+			排列方式：<a class="modeof1current">相关度 </a><a href="javascript:zlapply.searchjob.sortBy('1')" class="modeof2">发布日期</a><a href="javascript:zlapply.searchjob.sortBy('2')"class="modeof3" >首发日</a>
+			<span>显示方式<a class="modeof4current">列表</a> <a href="javascript:zlapply.searchjob.setSearchModel('1')"  class="modeof5">详细</a></span>
+			</div>
+
+			<!-- 职位列表条目 -->
+			<div class="search-result-cont">
+            <table width="692" class="search-result-tabth"><tr class="tabhead"><th class="tabCol1">职位名称</th><th class="tabCol2">公司名称</th><th class="tabCol3">工作地点</th><th class="tabCol4">发布日期</th>	<th class="tabCol5">&nbsp;</th></tr></table>
+			
+				<table class="search-result-tab">
+					<!-- 职位概况 -->
+					<tr class="showTR">
+						<td class="Jobname"><a href="#" target="_blank">Java工程师</a></td>
+						<td class="Companyname"><a href="#" target="_blank">广东广新信息技术产业发展有限公司</a></td>
+						<td class="Companyaddress">广州 - 海珠区</td>
+						<td class="releasetime">12-11-26</td>
+						<td class="showTR-btn"><a href="#">&nbsp;</a></td>
+					</tr>
+					<!-- 公司概况 -->
+					<tr class="hideTr">
+						<td colspan="5">
+							<table  class="search-result-infotab">
+								<tr>
+									<td class="tabCol1">
+										<span>地点：广州</span><span>公司性质：国企</span><span>公司规模：20-99人</span><span>经验：1-3年</span><span>学历：专科及同等学历</span><span>职位月薪：2001-4000元/月</span><p>...Oralce ､MSSQL Server ､Mysql数据库开发;3､精通HTML､XML､css､JavaScript､AJAX开发,<b>Java</b>开发;4､熟悉J2EE体系结构､移动软件体系结构5､沟通表达能力强､具...</p>
+									</td>
+									<td class="tabCol2">
+										<a href="javascript:void(0)"  onclick="return zlapply.searchjob.ajaxApplyBrig1('CC425815824J90250058000_763','ssi','1')" ><img src="#" /></a>
+										<a href="javascript:zlapply.searchjob.saveOne('CC425815824J90250058000_763')" class="Collection" >收藏职位</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+                
+				<table class="search-result-tab">
+					<!-- 第二条职位信息。第条信息一个talbe -->
+				</table>
+               				
+			</div>
+			<div class="applay-select">
+					<div class="applay-All">
+						<label><input type="checkbox" name="allvacancyid" onClick="zlapply.checkAll(this,'vacancyid')" id="checkbox4al2" />全选</label>
+						<button type="button" class="selectall-btn" onclick="javascript:zlapply.searchjob.ajaxApplyBrig2(document.frmMain.vacancyid,'ssb');dyweTrackEvent('applyNow','joblist');"></button>
+						<button type="button" class="Collection-btn" onclick="javascript:zlapply.searchjob.save()"></button>
+					</div>
+					<div class="pagesDown">
+						<ul>
+							<!--翻页-->
+                            <li><a href="#" class="current">1</a></li><li><a href="javascript:zlapply.searchjob.turnPage('2')">2</a></li><li><a href="javascript:zlapply.searchjob.turnPage('3')">3</a></li><li><a href="javascript:zlapply.searchjob.turnPage('4')">4</a></li><li><a href="javascript:zlapply.searchjob.turnPage('5')">5</a></li><li><a href="javascript:zlapply.searchjob.turnPage('6')">...</a></li><li><a href="javascript:zlapply.searchjob.turnPage('67')">67</a></li><li class="pagesDown-pos"><a href="javascript:zlapply.searchjob.turnPage('2')" class="next-page">下一页</a><a href="javascript:zlapply.searchjob.turnPage('2')" class="nextpagego"><em>一</em></a><div class="nextpagego-box">去<input type="text"  name="goto" onkeyup="zlapply.searchjob.fnCheckInt(this,event)" onchange="zlapply.searchjob.fnCheckInt(this,event)" onkeypress="zlapply.searchjob.enter2Page(this,event,67)" />页<button type="button" class="nextpagego-btn" name="go" onclick="zlapply.searchjob.gotoPage(this.form.goto.value,67)"></button></div></li>
+						
+							<li class="clearfix"></li>
+						</ul>
+						
+					</div>
+					<div class="clearfix"></div>
+			</div>
+		</div>               
+       </form> 
+	</div>
+    <script src="http://images.zhaopin.com/new2011/bottom/bottom_2011_utf_8.js"></script>
+</div>
+
+<script type="text/javascript" src="http://img01.zhaopin.cn/2012/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript">
+    //设置发布日期
+    $("#Release-time option").each(function () {
+        if ($(this).val() === $("input[name=PublishDate]").val()) {
+            $(this).attr("selected", true);
+        }
+    });
+
+    //月薪范围
+    $("select[name='SchSalaryFromAdv'] option").each(function () {
+        var vale = $("input[name='SalaryFrom_h']").val();
+
+        if ($(this).val() === $("input[name='SalaryFrom_h']").val()) {
+            $(this).attr("selected", "selected");
+        }
+
+    });
+    $("select[name='SchSalaryToAdv'] option").each(function () {
+        var vale = $("input[name='SalaryTo_h']").val();
+
+        if ($(this).val() === $("input[name='SalaryTo_h']").val()) {
+            $(this).attr("selected", "selected");
+        }
+
+    });
+
+    //职位类别
+    var empt = $("input[name='EmplType']");
+    empt.each(function () {
+        var check = $("input[name='EmplType_h']").val();
+        var chekvalue = $(this).val();
+        if (check == "") {
+            $(this).attr("checked", 'true');
+        } else {
+            var empts = check.split(';');
+            for (var i = 0; i < empts.length; i++) {
+                if (empts[i] === chekvalue) {
+                    $(this).attr("checked", 'true');
+                }
+            }
+
+        }
+    })
+
+
+</script>
+<script type="text/javascript" src="/javascript/searchChange.js"></script>
+<script type="text/javascript" src="/javascript/searchjob.init.sed.js"></script>
+<script type="text/javascript" src="/javascript/searchList.js"></script>
+<script type="text/javascript" src="/javascript/searchresult1.js"></script>
+<script type="text/javascript">
+    $('.hd2011hp').next().next().find('a').addClass('hd2011current');
+</script>
+</body>
+</html>

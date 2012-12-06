@@ -1,0 +1,10 @@
+ * {margin:0; padding:0}
+ ul,li { list-style:none}
+ .tab_box {width:350px; height:60px; border:1px solid #ccc; font-size:12px; font-family:Verdana, Arial, Helvetica, sans-serif}
+ .tagtab_label {height:28px; line-height:28px; background:none; position:relative; border-bottom:1px solid #999}
+ .tagtab_label h2 {font-size:12px; padding-left:10px;}
+ .tagtab_label ul {position:absolute; left:100px; bottom:-1px; height:26px;}
+ ul.tab_label li {float:left; margin-bottom:1px; line-height:16px; height:14px; margin:5px 0 0 -1px; border-left:1px solid #999; text-align:center; padding:0 12px; cursor:pointer}
+ ul.tab_label li.current {border:1px solid #999; border-bottom:none; background:#fff; height:25px; line-height:26px; margin:0}
+ .tab_content {padding: 5px;}
+ .input_keyword{height:22px;background-image: url("../images/input_keyword.png");}

@@ -37,7 +37,8 @@ public class HibernateTest {
 //		System.out.println(dao.findCompany(2).getDescrib());
 		
 //		System.out.println(dao.findAllResume(1).get(0).getAddress());
-		System.out.println(dao.findAllResume(1).get(0).getMyEvaluate());
+//		System.out.println(dao.findAllResume(1).get(0).getMyEvaluate());
+		Assert.assertEquals(2, dao.findAllAppliedJobs(1).size());
 	}
 	
 	@Test
